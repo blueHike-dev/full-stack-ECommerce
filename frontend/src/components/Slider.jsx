@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import ArrowLeftOutlinedIcon from "@mui/icons-material/ArrowLeftOutlined";
 import ArrowRightOutlinedIcon from "@mui/icons-material/ArrowRightOutlined";
+import { useState } from "react";
 
 const Container = styled.div`
   width: 100%;
@@ -28,26 +29,34 @@ const Arrow = styled.div`
 `;
 
 const Wrapper = styled.div`
-  height: 90%;
+  height: 100%;
   display: flex;
+  border-radius: 10px;
+  transition: all 1.5s ease;
+  transform: translateX(${(props) => props.slideIndex * -100}vw);
 `;
 
 const Slide = styled.div`
-  width: 180vh;
-  height: 85vh;
+  width: 100vw;
+  height: 100vh;
+  /* margin-left: 40px; */
   display: flex;
   align-items: center;
-  padding: 50px;
+  /* padding: 50px; */
+  border-radius: 10px;
   background-color: #${(props) => props.bg};
 `;
 const ImgContainer = styled.div`
   height: 100%;
   width: 100%;
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 const Image = styled.img`
-  height: 80%;
-  width: 80%;
+  height: 85%;
+  width: 75%;
   border-radius: 10px;
 `;
 
@@ -76,15 +85,24 @@ const Button = styled.button`
 `;
 
 const Slider = () => {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const handleclick = (direction) => {
+    if (direction === "left") {
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+    } else {
+      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+    }
+  };
+
   return (
     <Container>
       <Arrow direction="left" onClick={() => handleclick("left")}>
         <ArrowLeftOutlinedIcon />
       </Arrow>
-      <Wrapper>
-        <Slide bg="fcf1ed">
+      <Wrapper slideIndex={slideIndex}>
+        <Slide bg="f5fafd">
           <ImgContainer>
-            <Image src="hood.jpg" />
+            <Image src="l2.jpg" />
           </ImgContainer>
           <InfoContainer>
             <Title>SUMMER SALE!</Title>
@@ -94,9 +112,9 @@ const Slider = () => {
             <Button>SHOP NOW!</Button>
           </InfoContainer>
         </Slide>
-        <Slide bg="f5fafd">
+        <Slide bg="fcf1ed">
           <ImgContainer>
-            <Image src="hood.jpg" />
+            <Image src="m1.jpg" />
           </ImgContainer>
           <InfoContainer>
             <Title>POPULAR SALE!</Title>
@@ -106,9 +124,9 @@ const Slider = () => {
             <Button>SHOP NOW!</Button>
           </InfoContainer>
         </Slide>
-        <Slide bg="fbf0f4">
+        <Slide bg="">
           <ImgContainer>
-            <Image src="hood.jpg" />
+            <Image src="yellow-hoodie.jpg" />
           </ImgContainer>
           <InfoContainer>
             <Title>EVE SALE!</Title>
