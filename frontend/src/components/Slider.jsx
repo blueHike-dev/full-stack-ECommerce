@@ -77,11 +77,20 @@ const Desc = styled.p`
 `;
 
 const Button = styled.button`
-  padding: 10px;
+  padding: 11px;
   font-size: 20px;
-  background-color: transparent;
+  font-weight: 500;
+  color: black;
+  border: none;
+  background-color: rgba(0, 162, 255, 0.4);
   cursor: pointer;
   border-radius: 4px;
+  transition: all 0.5s ease;
+
+  &:hover {
+    background-color: rgba(0, 162, 255);
+    color: white;
+  }
 `;
 
 const Slider = () => {
