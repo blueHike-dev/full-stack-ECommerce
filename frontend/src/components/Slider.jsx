@@ -9,6 +9,7 @@ const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
+  margin-bottom: 10px;
 `;
 const Arrow = styled.div`
   width: 50px;
@@ -55,7 +56,7 @@ const ImgContainer = styled.div`
   justify-content: center;
 `;
 const Image = styled.img`
-  height: 85%;
+  height: 95%;
   width: 75%;
   border-radius: 10px;
 `;
@@ -111,7 +112,7 @@ const Slider = () => {
       <Wrapper slideIndex={slideIndex}>
         <Slide bg="f5fafd">
           <ImgContainer>
-            <Image src="l2.jpg" />
+            <Image src="l3.jpg" />
           </ImgContainer>
           <InfoContainer>
             <Title>SUMMER SALE!</Title>

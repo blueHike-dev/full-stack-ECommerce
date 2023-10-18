@@ -3,13 +3,14 @@ import styled from "styled-components";
 
 const Container = styled.div`
   flex: 1;
-  margin: 3px;
+  margin: 8px;
   height: 70vh;
   position: relative;
 `;
 const Image = styled.img`
   width: 100%;
   height: 100%;
+  border-radius: 8px;
   object-fit: cover;
 `;
 const Info = styled.div`
