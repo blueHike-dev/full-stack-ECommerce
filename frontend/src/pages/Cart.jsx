@@ -5,12 +5,14 @@ import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import styled from "styled-components";
+import { mobile } from "../responsive";
 
 const Container = styled.div``;
 
 const Wrapper = styled.div`
   padding: 20px;
-  height: 100vh;
+  /* height: 100vh; */
+  ${mobile({ padding: "10px" })}
 `;
 
 const Title = styled.h1`
@@ -35,7 +37,9 @@ const TopButton = styled.button`
   border-radius: 5px;
 `;
 
-const TopTexts = styled.div``;
+const TopTexts = styled.div`
+  ${mobile({ display: "none" })}
+`;
 
 const TopText = styled.span`
   text-decoration: underline;
@@ -47,15 +51,21 @@ const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 50px;
+  ${mobile({ flexDirection: "column", gap: "20px" })}
 `;
 
 const Info = styled.div`
   flex: 3;
+  gap: 30px;
 `;
 
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid grey;
+  margin-left: -15px;
+  margin-top: 40px;
+  ${mobile({ flexDirection: "column" })}
 `;
 
 const ProductDetail = styled.div`
@@ -68,6 +78,7 @@ const Image = styled.img`
   width: 350px;
   height: 300px;
   border-radius: 10px;
+  ${mobile({ width: "150px", height: "100px" })}
 `;
 
 const Details = styled.p`
@@ -79,9 +90,12 @@ const Details = styled.p`
 
 const ProductName = styled.h1`
   font-size: 25px;
+  ${mobile({ fontSize: "16px" })}
 `;
 
-const ProductId = styled.div``;
+const ProductId = styled.div`
+  ${mobile({ fontSize: "15px" })}
+`;
 
 const ProductColor = styled.div`
   width: 20px;
@@ -109,6 +123,7 @@ const ProductAmountContainer = styled.div`
 const ProductAmount = styled.div`
   font-size: 24px;
   margin: 5px;
+  ${mobile({ margin: "5px 15px" })}
 `;
 
 const ProductPrice = styled.div`
@@ -122,6 +137,7 @@ const Summary = styled.div`
   padding: 20px;
   height: 50vh;
   border-radius: 10px;
+  ${mobile({ padding: " 10px", width: "75vw", marginLeft: "-20px" })}
 `;
 
 const SummaryTitle = styled.h1`
@@ -174,6 +190,31 @@ const Cart = () => {
         </Top>
         <Bottom>
           <Info>
+            <Product>
+              <ProductDetail>
+                <Image src="shoe1.jpg" />
+                <Details>
+                  <ProductName className="gradient__text">
+                    <b>Product:</b> JESSIE THUNDER SHOES
+                  </ProductName>
+                  <ProductId>
+                    <b>ID:</b> 087947858437853
+                  </ProductId>
+                  <ProductColor color="black" />
+                  <ProductSize>
+                    <b>Size:</b> 37
+                  </ProductSize>
+                </Details>
+              </ProductDetail>
+              <PriceDetails>
+                <ProductAmountContainer>
+                  <AddIcon />
+                  <ProductAmount>2</ProductAmount>
+                  <RemoveIcon />
+                </ProductAmountContainer>
+                <ProductPrice>$ 30</ProductPrice>
+              </PriceDetails>
+            </Product>
             <Product>
               <ProductDetail>
                 <Image src="shoe1.jpg" />
