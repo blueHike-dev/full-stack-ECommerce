@@ -1,0 +1,54 @@
+:root {
+  --font-family: 'Manrope', sans-serif;
+
+  --gradient-text: linear-gradient(89.97deg, #343436 1.84%, #9c9a9a 102.67%);
+  --gradient-bar: linear-gradient(103.22deg, #AE67FA -13.86%, #F49867 99.55%);
+
+  --color-bg: #040C18;
+  --color-footer: #031B34;
+  --color-blog: #042c54;
+  --color-text: #eef0f1;
+  --color-subtext: #FF8A71;
+}
+
+.gradient__bg {
+  background: -moz-radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
+
+  /* safari 5.1+,chrome 10+ */
+  background: -webkit-radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
+
+  /* opera 11.10+ */
+  background: -o-radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
+
+  /* ie 10+ */
+  background: -ms-radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
+
+  /* global 92%+ browsers support */
+  background: radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
+}
+
+.gradient__text {
+  background: var(--gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blue {
+  /* global 94%+ browsers support */
+  /* background: linear-gradient(90deg, rgba(128, 178, 202, 1) 0%, rgba(200, 237, 245, 1) 50%, rgba(149, 186, 210, 1) 100%); */
+  
+      /* global 94%+ browsers support */
+      background: linear-gradient(86deg, rgba(177, 214, 231, 0.81) 0%, rgba(200, 237, 245, 0.79) 48%, rgba(88, 126, 151, 0.81) 100%);
+    
+}
+
+.header 
+{
+  /* global 94%+ browsers support */
+  background: linear-gradient(86deg, rgba(151, 177, 187, 0.945) 0%, rgba(128, 173, 185, 0.99) 48%, rgba(77, 94, 106, 0.1) 100%);
+}
+
+. {
+  background-color: black;
+}

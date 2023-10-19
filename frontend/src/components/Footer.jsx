@@ -7,10 +7,12 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
   display: flex;
   background-color: rgb(16, 16, 48, 0.04);
+  ${mobile({ flexDirection: "column" })}
 `;
 
 const Left = styled.div`
@@ -19,7 +21,9 @@ const Left = styled.div`
   flex-direction: column;
   padding: 20px;
 `;
-const Logo = styled.h1``;
+const Logo = styled.h1`
+  ${mobile({ fontSize: "25px" })}
+`;
 const Desc = styled.p`
   margin: 20px 0px;
 `;
@@ -42,6 +46,7 @@ const SocialIcon = styled.div`
 const Center = styled.div`
   flex: 1;
   padding: 20px;
+  ${mobile({ display: "none" })}
 `;
 
 const Title = styled.h3`
@@ -81,7 +86,7 @@ const Footer = () => {
     <Container>
       <Left>
         <Logo>blueHike.</Logo>
-        <Desc>Lorem ipsum dolor sit amet.</Desc>
+        <Desc>Visit our socials to get exclusivelly the latest trends!</Desc>
         <SocialContainer>
           <SocialIcon color="55ACEE">
             {/* 3B5999 */}

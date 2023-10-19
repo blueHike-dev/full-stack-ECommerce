@@ -3,9 +3,11 @@ import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
 import Badge from "@mui/material/Badge";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
   height: 60px;
+  ${mobile({ height: "50px" })}
 `;
 
 const Wrapper = styled.div`
@@ -13,17 +15,21 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  ${mobile({ padding: "10px 4px" })}
 `;
 
 const Left = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
+  ${mobile({ flex: "0.5" })}
 `;
 
 const Languange = styled.span`
   font-size: 14px;
   cursor: pointer;
+  margin-right: 20px;
+  ${mobile({ display: "none" })}
 `;
 
 const SearchContainer = styled.div`
@@ -37,15 +43,18 @@ const SearchContainer = styled.div`
 
 const Input = styled.input`
   border: none;
+  ${mobile({ width: "65px", fontSize: "14px" })}
 `;
 
 const Center = styled.div`
   flex: 1;
   text-align: center;
+  ${mobile({ flex: "0.8" })}
 `;
 
 const Logo = styled.h1`
   font-weight: bold;
+  ${mobile({ fontSize: "20px" })}
 `;
 
 const Right = styled.div`
@@ -53,12 +62,14 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  ${mobile({ justifyContent: "center", flex: "2" })}
 `;
 
 const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
+  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
 const Navbar = () => {
@@ -67,13 +78,19 @@ const Navbar = () => {
       <Wrapper>
         <Left>
           <Languange>EN</Languange>
-          <SearchContainer>
-            <Input />
+          <Logo>blueHike.</Logo>
+
+          {/* <SearchContainer>
+            <Input placeholder="Search.." />
             <SearchIcon style={{ color: "gray", fontSize: "18px" }} />
-          </SearchContainer>
+          </SearchContainer> */}
         </Left>
         <Center>
-          <Logo>blueHike.</Logo>
+          {/* <Logo>blueHike.</Logo> */}
+          <SearchContainer>
+            <Input placeholder="Search.." />
+            <SearchIcon style={{ color: "gray", fontSize: "18px" }} />
+          </SearchContainer>
         </Center>
         <Right>
           <MenuItem>REGISTER</MenuItem>

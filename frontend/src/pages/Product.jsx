@@ -6,12 +6,14 @@ import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
+import { mobile } from "../responsive";
 
 const Container = styled.div``;
 
 const Wrapper = styled.div`
   padding: 40px;
   display: flex;
+  ${mobile({ padding: "10px", flexDirection: "column" })}
 `;
 
 const ImgContainer = styled.div`
@@ -21,24 +23,40 @@ const ImgContainer = styled.div`
 const Image = styled.img`
   width: 85%;
   height: 75vh;
+  border-radius: 15px;
+  ${mobile({ height: "40vh" })}
 `;
 
 const InfoContainer = styled.div`
   flex: 1;
   padding: 0px 50px;
+  ${mobile({ padding: "10px" })}
 `;
 
 const Title = styled.h1`
-  font-weight: 200;
+  font-weight: 400;
+  ${mobile({ fontSize: "30px" })}
 `;
 
 const Desc = styled.p`
   margin: 20px 0px;
 `;
 
+const Small = styled.div`
+  ${mobile({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+    gap: "10px",
+    // padding: "20px",
+  })}
+`;
+
 const Price = styled.span`
   font-weight: 600;
   font-size: 40px;
+  ${mobile({ flex: "1", fontSize: "30px", marginTop: "-20px" })}
 `;
 
 const FilterContainer = styled.div`
@@ -47,6 +65,7 @@ const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
+  ${mobile({ flex: "4" })}
 `;
 
 const Filter = styled.div`
@@ -81,6 +100,7 @@ const AddContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  ${mobile({ width: "100%" })}
 `;
 
 const AmountContainer = styled.div`
@@ -122,7 +142,7 @@ const Product = () => {
     <Container>
       <Navbar />
       <Announcement />
-      <Wrapper>
+      <Wrapper className="blue">
         <ImgContainer>
           <Image src="l2.jpg" />
         </ImgContainer>
@@ -131,30 +151,29 @@ const Product = () => {
           <Desc>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis quod
             veniam non, beatae earum soluta in et perspiciatis animi dolores.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-            repellat autem possimus libero deleniti nemo cupiditate quam quia
-            maiores nobis!
           </Desc>
-          <Price>$ 20</Price>
-          <FilterContainer>
-            <Filter>
-              <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="darkblue" />
-              <FilterColor color="gray" />
-              <FilterColor color="yellow" />
-            </Filter>
-            <Filter>
-              <FilterTitle>Size</FilterTitle>
-              <FilterSize>
-                <FilterSizeOption>XS</FilterSizeOption>
-                <FilterSizeOption>S</FilterSizeOption>
-                <FilterSizeOption>M</FilterSizeOption>
-                <FilterSizeOption>L</FilterSizeOption>
-                <FilterSizeOption>XL</FilterSizeOption>
-              </FilterSize>
-            </Filter>
-          </FilterContainer>
+          <Small>
+            <Price>$ 20</Price>
+            <FilterContainer>
+              <Filter>
+                <FilterTitle>Color</FilterTitle>
+                <FilterColor color="black" />
+                <FilterColor color="darkblue" />
+                <FilterColor color="gray" />
+                <FilterColor color="yellow" />
+              </Filter>
+              <Filter>
+                <FilterTitle>Size</FilterTitle>
+                <FilterSize>
+                  <FilterSizeOption>XS</FilterSizeOption>
+                  <FilterSizeOption>S</FilterSizeOption>
+                  <FilterSizeOption>M</FilterSizeOption>
+                  <FilterSizeOption>L</FilterSizeOption>
+                  <FilterSizeOption>XL</FilterSizeOption>
+                </FilterSize>
+              </Filter>
+            </FilterContainer>
+          </Small>
           <AddContainer>
             <AmountContainer>
               <RemoveIcon style={{ cursor: "pointer" }} />
