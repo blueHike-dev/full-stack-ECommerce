@@ -36,6 +36,7 @@ const SocialIcon = styled.div`
   align-items: center;
   justify-content: center;
   margin-right: 20px;
+  cursor: pointer;
 `;
 
 const Center = styled.div`
@@ -66,6 +67,7 @@ const ContactItem = styled.div`
   margin-bottom: 20px;
   display: flex;
   align-items: center;
+  cursor: pointer;
   gap: 20px;
 `;
 

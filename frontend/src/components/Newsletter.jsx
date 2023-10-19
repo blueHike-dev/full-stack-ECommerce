@@ -42,6 +42,7 @@ const Button = styled.button`
   background-color: teal;
   color: white;
   margin-left: -2px;
+  cursor: pointer;
 `;
 
 const Newsletter = () => {
