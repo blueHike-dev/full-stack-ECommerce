@@ -13,6 +13,7 @@ mongoose
     console.log(err);
   });
 
+app.use(express.json());
 app.use("/api/user", userRoute);
 
 app.listen(process.env.PORT || 5000, () => {
