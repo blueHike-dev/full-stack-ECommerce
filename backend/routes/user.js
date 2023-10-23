@@ -1,12 +1,12 @@
 const User = require("../models/User");
 const {
-  verifyToken,
   verifyTokenAndAuthorization,
   verifyTokenAndAdmin,
 } = require("./verifyToken");
 
 const router = require("express").Router();
 
+//UPDATE
 router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
   if (req.body.password) {
     req.body.password = CryptoJS.AES.encrypt(
@@ -17,8 +17,7 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
 
   try {
     const updatedUser = await User.findByIdAndUpdate(
-      req,
-      params.id,
+      req.params.id,
       {
         $set: req.body,
       },
@@ -66,7 +65,7 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
 
 //GET USER STATS
 router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
-  const data = new Date();
+  const date = new Date();
   const lastYear = new Date(date.setFullYear(date.setFullYear() - 1));
 
   try {
