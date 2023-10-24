@@ -8,20 +8,18 @@ import Home from "./pages/Home";
 import ProductList from "./pages/ProductList";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-//  return (
-//     <BrowserRouter>
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-//         <Route path="/blog/*" element={<BlogApp />} />
-//         <Route path="/users/*" element={<UserApp />} />
-//       </Routes>
-//     </BrowserRouter>
-
 function App() {
+  const user = true;
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route path="/products/:category" element={<ProductList />} />
+        <Route path="/product/:id" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        {/* <Route path="/login">{user ? <Navigate to="/" /> : <Login />}</Route> */}
       </Routes>
     </BrowserRouter>
   );
