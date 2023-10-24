@@ -114,7 +114,7 @@ const Slider = () => {
       <Wrapper slideIndex={slideIndex}>
         <Slide bg="f5fafd">
           <ImgContainer>
-            <Image src="l3.jpg" />
+            <Image src="https://img.freepik.com/free-photo/medium-shot-woman-shopping-mall_23-2150585906.jpg?size=626&ext=jpg" />
           </ImgContainer>
           <InfoContainer>
             <Title>SUMMER SALE!</Title>
@@ -126,7 +126,7 @@ const Slider = () => {
         </Slide>
         <Slide bg="fcf1ed">
           <ImgContainer>
-            <Image src="m1.jpg" />
+            <Image src="https://img.freepik.com/free-photo/stunned-afro-american-woman-looks-with-scared-speechless-expression_273609-37377.jpg " />
           </ImgContainer>
           <InfoContainer>
             <Title>POPULAR SALE!</Title>
@@ -138,7 +138,7 @@ const Slider = () => {
         </Slide>
         <Slide bg="">
           <ImgContainer>
-            <Image src="yellow-hoodie.jpg" />
+            <Image src="https://img.freepik.com/free-photo/full-shot-woman-online-shopping_23-2150567519.jpg" />
           </ImgContainer>
           <InfoContainer>
             <Title>EVE SALE!</Title>

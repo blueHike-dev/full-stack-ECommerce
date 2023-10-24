@@ -1,63 +1,20 @@
 export const categories = [
   {
     id: 1,
-    img: "black-hoodie.jpg",
-    title: "Hoodies",
+    img: "https://img.freepik.com/free-photo/young-handsome-man-choosing-clothes-shop_1303-19720.jpg",
+    title: "Men-Fashion",
     cat: "Hoodies",
   },
   {
     id: 2,
-    img: "red-t.jpg",
-    title: "T-Shirts",
+    img: "https://img.freepik.com/free-photo/three-african-woman-choosing-clothes-store-shopping-day_627829-753.jpg ",
+    title: "Women-Fashion",
     cat: "T-Shirts",
   },
   {
     id: 3,
-    img: "ladies-hoodie.jpg",
-    title: "Ladies-Wear",
+    img: "https://img.freepik.com/free-photo/still-life-spring-wardrobe-switch_23-2150478961.jpg",
+    title: "Unisex",
     cat: "Ladies-Wear",
-  },
-];
-
-export const popularProducts = [
-  {
-    id: 1,
-    img: "black-t.jpg",
-  },
-  {
-    id: 2,
-    img: "blue-hoodie.jpg",
-  },
-  {
-    id: 3,
-    img: "blue-t.jpg",
-  },
-  {
-    id: 4,
-    img: "golf-black.jpg",
-  },
-  {
-    id: 5,
-    img: "l2.jpg",
-  },
-  {
-    id: 6,
-    img: "golf-blue.jpg",
-  },
-  {
-    id: 9,
-    img: "socks.jpg",
-  },
-  {
-    id: 10,
-    img: "red-duve.jpg",
-  },
-  {
-    id: 7,
-    img: "golf-red.jpg",
-  },
-  {
-    id: 8,
-    img: "towel.jpg",
   },
 ];

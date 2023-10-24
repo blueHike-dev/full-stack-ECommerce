@@ -34,7 +34,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-.blue {
+.header {
   /* global 94%+ browsers support */
   /* background: linear-gradient(90deg, rgba(128, 178, 202, 1) 0%, rgba(200, 237, 245, 1) 50%, rgba(149, 186, 210, 1) 100%); */
   
@@ -43,12 +43,14 @@
     
 }
 
-.header 
+.blue
 {
   /* global 94%+ browsers support */
-  background: linear-gradient(86deg, rgba(151, 177, 187, 0.945) 0%, rgba(128, 173, 185, 0.99) 48%, rgba(77, 94, 106, 0.1) 100%);
+  background: linear-gradient(86deg, rgba(105, 116, 121, 0.945) 0%, rgba(128, 173, 185, 0.99) 48%, rgba(77, 94, 106, 0.1) 100%);
+  padding:5px;
+  border-radius: 4px;
 }
 
-. {
+.a {
   background-color: black;
 }

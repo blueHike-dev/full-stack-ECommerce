@@ -32,8 +32,8 @@ const Info = styled.div`
   justify-content: center;
 `;
 const Title = styled.h1`
-  color: white;
   margin-bottom: 20px;
+  color: white;
 `;
 const Button = styled.button`
   border: none;
@@ -51,7 +51,7 @@ const CategoryItem = ({ item }) => {
       <Link to={`/products/${item.cat}`}>
         <Image src={item.img} />
         <Info>
-          <Title>{item.title}</Title>
+          <Title className=" blue">{item.title}</Title>
           <Button>SHOP NOW</Button>
         </Info>
       </Link>
