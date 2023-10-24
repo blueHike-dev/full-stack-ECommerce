@@ -60,7 +60,7 @@ const ProductList = () => {
     <Container>
       <Navbar />
       <Announcement />
-      <Title>Dresses</Title>
+      <Title className="gradient__text">{cat}</Title>
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
