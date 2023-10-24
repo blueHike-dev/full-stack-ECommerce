@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cors = require("cors");
 const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
 const productRoute = require("./routes/product");
@@ -16,6 +17,14 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true, // If you need to support cookies or authentication headers
+  })
+);
 
 app.use(express.json());
 app.use("/api/auth", authRoute);

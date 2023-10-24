@@ -19,7 +19,7 @@ export const categories = [
   },
 ];
 
-export const products = [
+export const popularProducts = [
   {
     id: 1,
     img: "black-t.jpg",

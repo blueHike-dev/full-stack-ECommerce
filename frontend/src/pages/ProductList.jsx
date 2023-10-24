@@ -7,6 +7,7 @@ import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
+// import { categories } from "../data";
 
 const Container = styled.div``;
 
@@ -45,16 +46,16 @@ const Option = styled.option`
 const ProductList = () => {
   const location = useLocation();
   const cat = location.pathname.split("/")[2];
-  const [filter, setFilters] = useState({});
+  const [filters, setFilters] = useState({});
+  const [sort, setSort] = useState("newest");
 
   const handleFilters = (e) => {
     const value = e.target.value;
     setFilters({
-      ...filter,
+      ...filters,
       [e.target.name]: value,
     });
   };
-  console.log(filter);
   return (
     <Container>
       <Navbar />
@@ -83,18 +84,25 @@ const ProductList = () => {
         </Filter>
         <Filter>
           <FilterText>Sort Products:</FilterText>
-          <Select>
-            <Option>Newest</Option>
-            <Option>Price (asc)</Option>
-            <Option>Price (desc)</Option>
+          <Select onChange={(e) => setSort(e.target.value)}>
+            <Option value="newest">Newest</Option>
+            <Option value="asc">Price (asc)</Option>
+            <Option value="desc">Price (desc)</Option>
           </Select>
         </Filter>
       </FilterContainer>
-      <Products />
+      <Products cat={cat} filters={filters} sort={sort} />
       <Newsletter />
       <Footer />
     </Container>
   );
 };
-
 export default ProductList;
+
+{
+  /* <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur minus, atque iusto adipisci numquam itaque facere blanditiis ipsam voluptas fugiat, quis alias inventore deserunt natus excepturi qui aspernatur nostrum aliquam.</h1> */
+}
+
+// https://www.freepik.com/free-photo/fashion-polo-shirt-men_1123455.htm#query=clothes%20png&position=6&from_view=keyword&track=ais
+// https://img.freepik.com/free-photo/fashion-polo-shirt-men_1203-7534.jpg
+// https://img.freepik.com/free-photo/blue-t-shirt_125540-727.jpg
