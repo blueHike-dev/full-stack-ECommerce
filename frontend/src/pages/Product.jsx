@@ -166,6 +166,8 @@ const Product = () => {
     }
   };
 
+  const handleClick = () => {};
+
   return (
     <ErrorBoundary>
       <Container>
@@ -184,12 +186,16 @@ const Product = () => {
                 <Filter>
                   <FilterTitle>Color</FilterTitle>
                   {product.color?.map((c) => (
-                    <FilterColor color={c} key={c} />
+                    <FilterColor
+                      onClick={() => setColor(c)}
+                      color={c}
+                      key={c}
+                    />
                   ))}
                 </Filter>
                 <Filter>
                   <FilterTitle>Size</FilterTitle>
-                  <FilterSize>
+                  <FilterSize onChange={(e) => setSize(e.target.value)}>
                     {product.size?.map((s) => (
                       <FilterSizeOption key={s}>{s}</FilterSizeOption>
                     ))}
@@ -209,7 +215,7 @@ const Product = () => {
                   style={{ cursor: "pointer" }}
                 />
               </AmountContainer>
-              <Button>ADD TO CART</Button>
+              <Button onClick={handleClick}>ADD TO CART</Button>
             </AddContainer>
           </InfoContainer>
         </Wrapper>
