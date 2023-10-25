@@ -9,6 +9,7 @@ import Footer from "../components/Footer";
 import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
 import { publicRequest } from "../requestMethods";
+import ErrorBoundary from "../ErrorBoundary";
 
 const Container = styled.div``;
 
@@ -143,6 +144,9 @@ const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
 
   useEffect(() => {
     const getProduct = async () => {
@@ -154,49 +158,65 @@ const Product = () => {
     getProduct();
   }, [id]);
 
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
+
   return (
-    <Container>
-      <Navbar />
-      <Announcement />
-      <Wrapper className="blue">
-        <ImgContainer>
-          <Image src={product.img} />
-        </ImgContainer>
-        <InfoContainer>
-          <Title>{product.title}</Title>
-          <Desc>{product.desc}</Desc>
-          <Small>
-            <Price>${product.price}</Price>
-            <FilterContainer>
-              <Filter>
-                <FilterTitle>Color</FilterTitle>
-                {product.color.map((c) => (
-                  <FilterColor color={c} key={c} />
-                ))}
-              </Filter>
-              <Filter>
-                <FilterTitle>Size</FilterTitle>
-                <FilterSize>
-                  {product.size.map((s) => (
-                    <FilterSizeOption key={s}>{s}</FilterSizeOption>
+    <ErrorBoundary>
+      <Container>
+        <Navbar />
+        <Announcement />
+        <Wrapper className="blue">
+          <ImgContainer>
+            <Image src={product.img} />
+          </ImgContainer>
+          <InfoContainer>
+            <Title>{product.title}</Title>
+            <Desc>{product.desc}</Desc>
+            <Small>
+              <Price>${product.price}</Price>
+              <FilterContainer>
+                <Filter>
+                  <FilterTitle>Color</FilterTitle>
+                  {product.color?.map((c) => (
+                    <FilterColor color={c} key={c} />
                   ))}
-                </FilterSize>
-              </Filter>
-            </FilterContainer>
-          </Small>
-          <AddContainer>
-            <AmountContainer>
-              <RemoveIcon style={{ cursor: "pointer" }} />
-              <Amount>1</Amount>
-              <AddIcon style={{ cursor: "pointer" }} />
-            </AmountContainer>
-            <Button>ADD TO CART</Button>
-          </AddContainer>
-        </InfoContainer>
-      </Wrapper>
-      <Newsletter />
-      <Footer />
-    </Container>
+                </Filter>
+                <Filter>
+                  <FilterTitle>Size</FilterTitle>
+                  <FilterSize>
+                    {product.size?.map((s) => (
+                      <FilterSizeOption key={s}>{s}</FilterSizeOption>
+                    ))}
+                  </FilterSize>
+                </Filter>
+              </FilterContainer>
+            </Small>
+            <AddContainer>
+              <AmountContainer>
+                <RemoveIcon
+                  onClick={() => handleQuantity("dec")}
+                  style={{ cursor: "pointer" }}
+                />
+                <Amount>{quantity}</Amount>
+                <AddIcon
+                  onClick={() => handleQuantity("inc")}
+                  style={{ cursor: "pointer" }}
+                />
+              </AmountContainer>
+              <Button>ADD TO CART</Button>
+            </AddContainer>
+          </InfoContainer>
+        </Wrapper>
+        <Newsletter />
+        <Footer />
+      </Container>
+    </ErrorBoundary>
   );
 };
 
