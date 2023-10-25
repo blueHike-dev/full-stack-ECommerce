@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import Navbar from "../components/Navbar";
@@ -6,6 +6,8 @@ import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import { useSelector } from "react-redux";
+import StripeCheckout from "react-stripe-checkout";
 
 const Container = styled.div``;
 
@@ -174,6 +176,13 @@ const SummaryButton = styled.button`
 `;
 
 const Cart = () => {
+  const cart = useSelector((state) => state.cart);
+  const [stripeToken, setStripeToken] = useState(null);
+
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+  console.log(stripeToken);
   return (
     <Container>
       <Navbar />
@@ -190,62 +199,41 @@ const Cart = () => {
         </Top>
         <Bottom>
           <Info>
-            <Product>
-              <ProductDetail>
-                <Image src="shoe1.jpg" />
-                <Details>
-                  <ProductName className="gradient__text">
-                    <b>Product:</b> JESSIE THUNDER SHOES
-                  </ProductName>
-                  <ProductId>
-                    <b>ID:</b> 087947858437853
-                  </ProductId>
-                  <ProductColor color="black" />
-                  <ProductSize>
-                    <b>Size:</b> 37
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetails>
-                <ProductAmountContainer>
-                  <AddIcon />
-                  <ProductAmount>2</ProductAmount>
-                  <RemoveIcon />
-                </ProductAmountContainer>
-                <ProductPrice>$ 30</ProductPrice>
-              </PriceDetails>
-            </Product>
-            <Product>
-              <ProductDetail>
-                <Image src="shoe1.jpg" />
-                <Details>
-                  <ProductName className="gradient__text">
-                    <b>Product:</b> JESSIE THUNDER SHOES
-                  </ProductName>
-                  <ProductId>
-                    <b>ID:</b> 087947858437853
-                  </ProductId>
-                  <ProductColor color="black" />
-                  <ProductSize>
-                    <b>Size:</b> 37
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetails>
-                <ProductAmountContainer>
-                  <AddIcon />
-                  <ProductAmount>2</ProductAmount>
-                  <RemoveIcon />
-                </ProductAmountContainer>
-                <ProductPrice>$ 30</ProductPrice>
-              </PriceDetails>
-            </Product>
+            {cart.products?.map((product) => (
+              <Product>
+                <ProductDetail>
+                  <Image src={product.img} />
+                  <Details>
+                    <ProductName className="gradient__text">
+                      <b>Product:</b> {product.title}
+                    </ProductName>
+                    <ProductId>
+                      <b>ID:</b> {product._id}
+                    </ProductId>
+                    <ProductColor color={product.color} />
+                    <ProductSize>
+                      <b>Size:</b> {product.size}
+                    </ProductSize>
+                  </Details>
+                </ProductDetail>
+                <PriceDetails>
+                  <ProductAmountContainer>
+                    <AddIcon />
+                    <ProductAmount>{product.quantity}</ProductAmount>
+                    <RemoveIcon />
+                  </ProductAmountContainer>
+                  <ProductPrice>
+                    $ {product.price * product.quantity}
+                  </ProductPrice>
+                </PriceDetails>
+              </Product>
+            ))}
           </Info>
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
+              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -257,9 +245,18 @@ const Cart = () => {
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
+              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
-            <SummaryButton>CHECKOUT NOW</SummaryButton>
+            <StripeCheckout
+              name="blueHike Shop"
+              image="https://avatars.githubusercontent.com/u/135696550?v=4"
+              billingAddress
+              shippingAddress
+              description={`Your total is $${cart.total}`}
+              amount={cart.total * 100}
+              token={onToken}>
+              <SummaryButton>CHECKOUT NOW</SummaryButton>
+            </StripeCheckout>
           </Summary>
         </Bottom>
       </Wrapper>
