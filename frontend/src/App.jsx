@@ -5,11 +5,11 @@ import Register from "./pages/Register";
 import Product from "./pages/Product";
 import Home from "./pages/Home";
 import ProductList from "./pages/ProductList";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Success from "./pages/Success";
 
 function App() {
-  const user = true;
+  const user = false;
   return (
     <BrowserRouter>
       <Routes>
@@ -18,9 +18,9 @@ function App() {
         <Route path="/product/:id" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/success" element={<Success />} />
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/register" element={<Register />} />
-        {/* <Route path="/login">{user ? <Navigate to="/" /> : <Login />}</Route> */}
+        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
       </Routes>
     </BrowserRouter>
   );
